@@ -6,52 +6,48 @@ var TotalRow = require('./TotalRow');
 
 module.exports = React.createClass({
     getInitialState() {
-        return { counters: this.props.counters.map(
-            counter => { counter.id = Math.random(); return counter })
-        }
+        var hash = {};
+        this.props.counters.forEach(
+            counter => { hash[Math.random()] = counter }
+        );
+        return hash
     },
 
     handleAddCounter(name) {
-        this.setState({ counters:
-            this.state.counters.concat({ id: Math.random(), name: name, count: 0 })
-        })
+        this.state[Math.random()] = { name: name, count: 0 };
+        this.setState(this.state);
     },
-    handleRemoveCounter(toRemove) {
-        this.setState({
-            counters: this.state.counters.filter(counter => counter != toRemove)
-        })
+    handleRemoveCounter(id) {
+        delete this.state[id];
+        this.setState(this.state);
     },
-    handleChangeCounter(toChange, delta) {
-        this.setState({
-            counters: this.state.counters.map(counter => {
-                if (counter == toChange) { counter.count += delta }
-                return counter
-            })
-        })
+    handleChangeCounter(id, delta) {
+        this.state[id].count += delta;
+        this.setState(this.state);
     },
 
     render() {
-        var rows = this.state.counters.map(counter =>
+        var rows = [];
+        Object.keys(this.state).forEach(id => rows.push(
             <CounterRow
-                key={counter.id}
-                counter={counter}
+                key={id}
+                counterId={id}
+                counter={this.state[id]}
                 onRemoveCounter={this.handleRemoveCounter}
                 onChangeCounter={this.handleChangeCounter}
             />
-        );
+        ));
 
         return (
-            <div>
-                <form>
-                    <InputRow onAddCounter={this.handleAddCounter} />
-                    <table>
-                        <tbody>
-                            {rows}
-                            <TotalRow counters={this.state.counters} />
-                        </tbody>
-                    </table>
-                </form>
-            </div>
+            <form>
+                <InputRow onAddCounter={this.handleAddCounter} />
+                <table>
+                    <tbody>
+                        {rows}
+                        <TotalRow counters={this.state} />
+                    </tbody>
+                </table>
+            </form>
         )
     }
 })

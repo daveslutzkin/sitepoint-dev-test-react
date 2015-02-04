@@ -7,7 +7,7 @@ module.exports = React.createClass({
                 <td></td>
                 <td>TOTAL</td>
                 <td>
-                    {this.props.counters.reduce((acc, {count}) => acc + count, 0)}
+                    {Object.keys(this.props.counters).reduce((acc, id) => acc + this.props.counters[id].count, 0)}
                 </td>
             </tr>
         );

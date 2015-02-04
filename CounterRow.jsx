@@ -3,15 +3,15 @@
 module.exports = React.createClass({
     handleRemoveClick(event) {
         event.preventDefault();
-        this.props.onRemoveCounter(this.props.counter)
+        this.props.onRemoveCounter(this.props.counterId)
     },
     handleDecrementClick(event) {
         event.preventDefault();
-        this.props.onChangeCounter(this.props.counter, -1)
+        this.props.onChangeCounter(this.props.counterId, -1)
     },
     handleIncrementClick(event) {
         event.preventDefault();
-        this.props.onChangeCounter(this.props.counter, +1)
+        this.props.onChangeCounter(this.props.counterId, +1)
     },
 
     render() {
