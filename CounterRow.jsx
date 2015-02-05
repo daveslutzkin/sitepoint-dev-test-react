@@ -7,11 +7,11 @@ module.exports = React.createClass({
     },
     handleDecrementClick(event) {
         event.preventDefault();
-        this.props.onChangeCounter(this.props.counterId, -1)
+        this.props.onDecrementCounter(this.props.counterId, -1)
     },
     handleIncrementClick(event) {
         event.preventDefault();
-        this.props.onChangeCounter(this.props.counterId, +1)
+        this.props.onIncrementCounter(this.props.counterId, +1)
     },
 
     render() {
