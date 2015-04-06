@@ -1,21 +1,14 @@
 module.exports = {
-  entry: './index.jsx',
+  entry: './static/app.jsx',
+
   output: {
-    filename: 'bundle.js',
-    publicPath: 'http://dev.vm:8090/assets'
+    path: __dirname + '/bundle',
+    filename: 'bundle.js'
   },
+
   module: {
     loaders: [
-      {
-        test: /\.jsx$/,
-        loader: 'jsx-loader?harmony'
-      }
+      { test: /\.jsx?$/, loader: 'jsx-loader?harmony' }
     ]
-  },
-  externals: {
-    'react': 'React'
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
   }
-}
+};

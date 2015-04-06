@@ -1,18 +1,27 @@
 {
-  "name": "sitepoint-dev-test-react",
+  "name": "sitepoint-test",
   "version": "1.0.0",
-  "description": "Implementation of the SP counter test",
-  "author": "daveslutzkin",
-  "repository": "http://github.com/daveslutzkin/sitepoint-dev-test-react.git",
+  "description": "sitepoint front end test",
+  "main": "index.js",
   "scripts": {
-    "start": "npm run serve | npm run dev",
-    "serve": "http-server -p 8080",
-    "dev": "webpack-dev-server --progress --colors --port 8090"
+    "start" : "node index.js"
   },
+  "keywords": [
+    "sitepoint"
+  ],
+  "author": "daveslutzkin",
   "dependencies": {
-    "react": "^0.12.2",
-    "jsx-loader": "^0.12.2",
-    "webpack": "^1.5.3",
-    "webpack-dev-server": "^1.7.0"
+    "body-parser": "^1.10.1",
+    "compression": "^1.3.0",
+    "express": "^4.11.0",
+    "lodash": "^2.4.1",
+    "morgan": "^1.5.1",
+
+    "flux": "^2.0.1",
+    "jsx-loader": "^0.13.1",
+    "object-assign": "^2.0.0",
+    "react": "^0.13.1",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.8.0"
   }
 }
